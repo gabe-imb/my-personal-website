@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        /* --- CSS STYLES --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #222;
+        }
+
+        h2 {
+            border-left: 5px solid #333;
+            padding-left: 10px;
+            margin-top: 40px;
+            color: #444;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Project Cards */
+        .project-item {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gabriel Imbrunetti</h1>
+        <div class="subtitle">Software Engineer | Security | Machine Learning</div>
+        <p>
+            <a href="mailto:gabriel.imbrunetti@gmail.com">gabriel.imbrunetti@gmail.com</a> &bull; 
+            <a href="https://www.linkedin.com/in/gabriel-imbrunetti-5b827a303/" target="=_blank">LinkedIn</a> &bull; 
+            <a href="https://github.com/gabe-imb" target="=_blank">GitHub</a>
+        </p>
+    </header>
+
+    <section>
+        <h2>Projects</h2>
+
+        <div class="project-item">
+            <div class="project-title">Project Name One</div>
+            <p>
+                An unsupervised anomaly detection system that learns normal traffic patterns and flags deviations 
+                that could indicate an intrusion or attack.
+            </p>
+            <a href="https://github.com/gabe-imb/Network-Anomaly-Detection-for-Intrusion-Detection" target="_blank" class="project-link">View Code &rarr;</a>
+        </div>
+
+        <div class="project-item">
+            <div class="project-title">Project Name</div>
+            <p>
+                N/A
+            </p>
+            <a href="#" class="project-link">View Code &rarr;</a>
+        </div>
+        
+        <div class="project-item">
+            <div class="project-title">Project Name</div>
+            <p>
+                N/A
+            </p>
+            <a href="#" class="project-link">View Code &rarr;</a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+
+        <div class="education-item">
+            <strong>University of Oregon</strong>
+            <div>Bachelor of Science in Computer Science</div>
+            <div class="date">Graduation Date: June 2027</div>
+        </div>
+
+        <!---
+        <div class="education-item">
+        <strong>Certification Body</strong>
+        <div>Specialized Certificate Name</div>
+        <div class="date">Completed: Dec 2022</div>
+        </div>
+        -->
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Gabriel Imbrunetti. Built with simple HTML/CSS.</p>
+    </footer>
+
+</body>
+</html>
