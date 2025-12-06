@@ -95,6 +95,23 @@
             body { padding: 15px; }
             h1 { font-size: 2rem; }
         }
+
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -139,12 +156,44 @@
     </section>
 
     <section>
-        <h2>Education</h2>
+        
+        <h2>Skills</h2>
+        <div class="education-item">
+            <strong>Framework & Tools</strong>
+            <ul>
+                <li>Pandas</li>
+                <li>Numpy</li>
+                <li>Skikit-Learn</li>
+                <li>Plotly</li>
+                <li>Docker</li>
+                <li>MongoDB</li>
+                <li>Jupyter</li>
+            </ul>
+            
+            <strong>Languages</strong>
+            <ul>
+                <li>Python</li>
+                <li>C</li>
+            </ul>
+                    
+            <strong>Platforms/OS</strong>
+            <ul>
+                <li>macOS</li>
+                <li>Linux</li>
+            </ul>
+            
+            <strong>Version Control</strong>
+            <ul>
+                <li>Git</li>
+            </ul>
 
+        <h2>Education</h2>
         <div class="education-item">
             <strong>University of Oregon</strong>
             <div>Bachelor of Science in Computer Science</div>
-            <div class="date">Graduation Date: June 2027</div>
+            <div class="date">Expected Graduation: June 2027</div>
+        </div>
+
         </div>
 
         <!---
