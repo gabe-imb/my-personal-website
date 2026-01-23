@@ -3,211 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>Gabriel Imbrunetti | Portfolio</title>
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS STYLES --- */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
+        /* --- CSS VARIABLES (Easy to change colors here) --- */
+        :root {
+            --primary: #1957f6;       /* Vibrant Indigo */
+            --primary-dark: #3636ee;  /* Deep Indigo */
+            --secondary: #364eb9;     /* Purple accent */
+            --bg-color: #18181b;      /* Dark gray background */
+            --card-bg: #27272a;       /* Medium dark gray card */
+            --text-main: #fafafa;     /* Light text */
+            --text-muted: #a1a1aa;    /* Muted gray text */
+            --accent-bg: #3f3f46;     /* Dark gray accent */
+            --gradient-1: #2a2dd6;
+            --gradient-2: #2e34b1;
+            --gradient-3: #ec4899;
         }
 
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* --- HEADER --- */
         header {
             text-align: center;
-            padding: 40px 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-in;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            opacity: 0.15;
+            z-index: -1;
         }
 
         h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #222;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+
+
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            font-weight: 600;
+            border: 2px solid #2d448a4d;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(99, 102, 241, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 0px 20px rgba(243, 243, 243, 0.4);
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            margin-bottom: 60px;
         }
 
         h2 {
-            border-left: 5px solid #333;
-            padding-left: 10px;
-            margin-top: 40px;
-            color: #444;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .subtitle {
-            color: #666;
-            font-size: 1.2rem;
-            margin-top: 10px;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
         }
 
-        /* Project Cards */
-        .project-item {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        /* --- PROJECTS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            border-color: var(--primary);
         }
 
         .project-title {
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
         }
 
         .project-link {
             display: inline-block;
-            margin-top: 10px;
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
-        .project-link:hover {
-            text-decoration: underline;
+        /* --- SKILLS SECTION --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
         }
 
-        /* Education Section */
-        .education-item {
+        .skill-category h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--secondary);
             margin-bottom: 15px;
+            letter-spacing: 0.5px;
         }
 
-        .date {
-            color: #666;
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 2rem; }
-        }
-
-        ul, ol {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        ul {
+        .skill-list {
             list-style: none;
             padding: 0;
+            margin: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 10px;
         }
 
-        li {
-            margin-bottom: 5px;
+        .skill-list li {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        /*
+        .skill-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0px 12px rgba(255, 255, 255, 0.3);
+            border-color: var(--primary);
+        }
+        */
+
+        /* --- EDUCATION --- */
+        .education-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, transparent 100%);
+        }
+
+        
+        .edu-details strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .edu-date {
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding-top: 30px;
+        }
+
+        /* --- ANIMATION --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .education-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Gabriel Imbrunetti</h1>
-        <div class="subtitle">Software Engineer | Security | Machine Learning</div>
-        <p>
-            <a href="mailto:gabriel.imbrunetti@gmail.com">gabriel.imbrunetti@gmail.com</a> &bull; 
-            <a href="https://www.linkedin.com/in/gabriel-imbrunetti-5b827a303/" target="=_blank">LinkedIn</a> &bull; 
-            <a href="https://github.com/gabe-imb" target="=_blank">GitHub</a>
-        </p>
-    </header>
-
-    <section>
-        <h2>Projects</h2>
-
-        <div class="project-item">
-            <div class="project-title">Network Anomaly Detection</div>
-            <p>
-                An unsupervised anomaly detection system that learns normal traffic patterns and flags deviations 
-                that could indicate an intrusion or attack.
-            </p>
-            <a href="https://github.com/gabe-imb/Network-Anomaly-Detection-for-Intrusion-Detection" target="_blank" class="project-link">View Code &rarr;</a>
-        </div>
-
-        <div class="project-item">
-            <div class="project-title">Project Name</div>
-            <p>
-                N/A
-            </p>
-            <a href="#" class="project-link">View Code &rarr;</a>
-        </div>
-        
-        <div class="project-item">
-            <div class="project-title">Project Name</div>
-            <p>
-                N/A
-            </p>
-            <a href="#" class="project-link">View Code &rarr;</a>
-        </div>
-    </section>
-
-    <section>
-        
-        <h2>Skills</h2>
-        <div class="education-item">
-            <strong>Framework & Tools</strong>
-            <ul>
-                <li>Pandas</li>
-                <li>Numpy</li>
-                <li>Scikit-Learn</li>
-                <li>Plotly</li>
-                <li>Docker</li>
-                <li>MongoDB</li>
-                <li>Jupyter</li>
-            </ul>
+    <div class="container">
+        <header>
+            <h1>Gabriel Imbrunetti</h1>
+            <div class="subtitle">Software Engineer - Security - Machine Learning</div>
             
-            <strong>Languages</strong>
-            <ul>
-                <li>Python</li>
-                <li>C</li>
-            </ul>
-                    
-            <strong>Platforms/OS</strong>
-            <ul>
-                <li>macOS</li>
-                <li>Linux</li>
-            </ul>
-            
-            <strong>Version Control</strong>
-            <ul>
-                <li>Git</li>
-            </ul>
+            <div class="social-links">
+                <a href="mailto:gabriel.imbrunetti@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/gabriel-imbrunetti-5b827a303/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/gabe-imb" target="_blank">GitHub</a>
+            </div>
+        </header>
 
-        <h2>Education</h2>
-        <div class="education-item">
-            <strong>University of Oregon</strong>
-            <div>Bachelor of Science in Computer Science</div>
-            <div class="date">Expected Graduation: June 2027</div>
-        </div>
+        <section>
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Network Anomaly Detection</div>
+                        <p class="project-desc">
+                            An unsupervised anomaly detection system that learns normal traffic patterns 
+                            and flags deviations that could indicate an intrusion.
+                        </p>
+                    </div>
+                    <a href="https://github.com/gabe-imb/Network-Anomaly-Detection-for-Intrusion-Detection" target="_blank" class="project-link">View Code &rarr;</a>
+                </div>
 
-        </div>
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Network Sniffer</div>
+                        <p class="project-desc">
+                            A simple python network sniffer that uses built in python libraries 
+                            like <strong>socket</strong> and <strong>ipaddress</strong>.
+                        </p>
+                    </div>
+                    <a href="https://github.com/gabe-imb/Network-Sniffer" target="_blank" class="project-link">View Code &rarr;</a>
+                </div>
+                
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Project TBD</div>
+                        <p class="project-desc">
+                            TBD
+                        </p>
+                    </div>
+                    <a href="#" target="" class="project-link">View Code &rarr;</a>
+                </div>
+            </div>
+        </section>
 
-        <!---
-        <div class="education-item">
-        <strong>Certification Body</strong>
-        <div>Specialized Certificate Name</div>
-        <div class="date">Completed: Dec 2022</div>
-        </div>
-        -->
-    </section>
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-container">
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <ul class="skill-list">
+                        <li>Pandas</li>
+                        <li>Numpy</li>
+                        <li>Scikit-Learn</li>
+                        <li>Plotly</li>
+                        <li>Docker</li>
+                        <li>MongoDB</li>
+                        <li>Jupyter</li>
+                    </ul>
+                </div>
 
-    <footer>
-        <p>&copy; 2025 Gabriel Imbrunetti. Built with simple HTML/CSS.</p>
-    </footer>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>C/C++</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Platforms/OS</h3>
+                    <ul class="skill-list">
+                        <li>macOS</li>
+                        <li>Linux</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Version Control</h3>
+                    <ul class="skill-list">
+                        <li>Git/GitHub</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="education-card">
+                <div class="edu-details">
+                    <strong>University of Oregon</strong>
+                    <div>Bachelor of Science in Computer Science</div>
+                </div>
+                <div class="edu-date">Expected Grad Date: June 2027</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Gabriel Imbrunetti.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
